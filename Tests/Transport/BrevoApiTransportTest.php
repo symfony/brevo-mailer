@@ -18,6 +18,7 @@ use Symfony\Component\HttpClient\Response\JsonMockResponse;
 use Symfony\Component\Mailer\Bridge\Brevo\Transport\BrevoApiTransport;
 use Symfony\Component\Mailer\Envelope;
 use Symfony\Component\Mailer\Exception\HttpTransportException;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\Header\MetadataHeader;
 use Symfony\Component\Mailer\Header\TagHeader;
 use Symfony\Component\Mime\Address;
@@ -144,7 +145,7 @@ class BrevoApiTransportTest extends TestCase
      * IDN (internationalized domain names) like kältetechnik-xyz.de need to be transformed to ACE
      * (ASCII Compatible Encoding) e.g.xn--kltetechnik-xyz-0kb.de, otherwise brevo api answers with 400 http code.
      *
-     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+     * @throws TransportExceptionInterface
      */
     public function testSendForIdnDomains()
     {
